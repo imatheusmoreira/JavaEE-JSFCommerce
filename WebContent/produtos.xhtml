@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Produtos</title>
+	<h:outputStylesheet name="/css/bootstrap.min.css" />
+</h:head>
+<h:body>
+	<center>
+		<h2>
+			<h:outputText value="JSFCommerce - Todos os produtos" />
+		</h2>
+	</center>
+	<h:form id="produtosForm">
+		<p:menubar>
+			<f:facet name="options">
+				<p:button value="Logout" href="/JSFCommerce/logout" icon="pi pi-fw pi-sign-out"
+					styleClass="ui-button-info" />
+			</f:facet>
+		</p:menubar>
+		<p:dataTable id="produtoTable" binding="#{table}"
+			value="#{produtoBean.listar()}" var="produto"
+			styleClass="table table-striped table-bordered tableUpdated">
+			<f:facet name="header">
+				<div class="products-table-header">
+					<span style="font-weight: bold">PRODUTOS</span>
+				</div>
+			</f:facet>
+			<p:column headerText="#">
+				<h:outputText value="#{produto.id}" />
+			</p:column>
+			<p:column headerText="Código">
+				<h:outputText value="#{produto.codigo}" />
+			</p:column>
+			<p:column headerText="Descrição">
+				<h:outputText value="#{produto.descricao}" />
+			</p:column>
+			<p:column style="text-align: center" headerText="Foto">
+				<p:graphicImage style="width:40%;" value="#{produto.foto}"/>
+			</p:column>
+			<p:column headerText="Valor">
+				<h:outputText value="R$ #{produto.valor}" />
+			</p:column>
+			<!-- <p:column>
+				<f:facet name="header">Update</f:facet>
+				<h:commandButton action="#{produtoBean.editSchoolDetailsById()}"
+					value="Update" styleClass="btn btn-primary">
+					<f:param name="selectedSchoolId" value="#{produto.id}" />
+				</h:commandButton>
+			</p:column>-->
+			<p:column>
+				<f:facet name="header">Ações</f:facet>
+				<p:commandButton style="box-shadow: 0 3px 6px rgb(0 0 0/ 16%), 0 3px 6px rgb(0 0 0/ 23%);" styleClass="ui-button-success" value="Comprar" icon="pi pi-check" iconPos="right" 
+				action="#{produtoBean.comprarProdutoPorId()}">
+					<f:param name="idSelecionado" value="#{produto.id}" />
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

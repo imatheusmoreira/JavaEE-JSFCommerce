@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Comprar</title>
+</h:head>
+
+<h:body>
+	<center>
+		<h2>
+			<h:outputText value="JSFCommerce - Confirmação de compra" />
+		</h2>
+	</center>
+	<p:menubar>
+		<f:facet name="options">
+			<p:button value="Logout" href="/JSFCommerce/logout" icon="pi pi-fw pi-sign-out"
+				styleClass="ui-button-info" />
+		</f:facet>
+	</p:menubar>
+	<hr/>
+	<h3 style="margin-top: 0">Verifique a descrição antes de confirmar. Não devolvemos o dinheiro</h3>
+	<hr/>
+	<h:form id="comprarProduto" styleClass="form-horizontal">
+		<div class="card">
+		<p:fieldset legend="Detalhes">
+			<p:panelGrid columns="2">			
+				<f:facet name="header">
+					<p:graphicImage style="width:40%; text-align: center" value="#{produtoBean.produtoEditado.foto}"/>
+				</f:facet>
+
+				<h:outputText value="Código interno" />
+				<h:outputText value="#{produtoBean.produtoEditado.id}" />
+				
+				<h:outputText value="Código de barras" />
+				<h:outputText value="#{produtoBean.produtoEditado.codigo}" />
+				
+				<h:outputText value="Descrição" />
+				<h:outputText value="#{produtoBean.produtoEditado.descricao}" />
+
+				<h:outputText value="Valor" />
+				<h:outputText value="R$ #{produtoBean.produtoEditado.valor}" />
+			</p:panelGrid>
+			</p:fieldset>
+		</div>
+		
+		<div class="card">
+			<p:commandButton action="produtos.xhtml?faces-redirect=true" value="Voltar para a listagem"/>
+			<p:commandButton action="sucesso.xhtml?faces-redirect=true" value="Comprar"/>
+		</div>
+	</h:form>
+</h:body>
+</html>

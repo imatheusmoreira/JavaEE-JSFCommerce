@@ -1,0 +1,26 @@
+<beans:beans
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security-4.2.xsd
+http://www.springframework.org/schema/data/jpa
+http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd">
+
+	<beans:bean id="myUserDetailsService" class="br.edu.ifce.utils.MyUserDetailsService" />
+
+	<http auto-config="true">
+		<intercept-url pattern="/login" access="permitAll"></intercept-url>
+        <intercept-url pattern="/logout" access="permitAll"></intercept-url>
+		<csrf disabled="true" />
+		<logout />
+		<intercept-url pattern="/**" access="hasRole('ROLE_USER')"></intercept-url>
+	</http>
+
+	<authentication-manager>
+	    <authentication-provider user-service-ref="myUserDetailsService" />
+	</authentication-manager>
+</beans:beans>

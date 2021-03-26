@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Sucesso</title>
+	<meta http-equiv="refresh" content="5; URL='produtos.jsf'"/>	
+</h:head>
+
+<h:body>
+	<center>
+		<h2>
+			<h:outputText value="JSFCommerce - Obrigado!" />
+		</h2>
+	</center>
+	<p:menubar>
+		<f:facet name="options">
+			<p:button value="Logout" href="/JSFCommerce/logout" icon="pi pi-fw pi-sign-out"
+				styleClass="ui-button-info" />
+		</f:facet>
+	</p:menubar>
+	<h1 style="text-align: center">Obrigado pela preferência e compre sempre conosco.</h1>
+	<small>Aguarde. Em alguns segundos você será redirecionado...</small>
+</h:body>
+</html>
